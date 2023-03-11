@@ -1561,3 +1561,13 @@ RegisterCommand("dv", function()
 		DeleteEntity(aT)
 	end
 end, false)
+
+RegisterCommand("fix", function(source, args, rawCommand)
+	local aT = GetVehiclePedIsIn(PlayerPedId(), false)
+	if NetworkHasControlOfEntity(aT) then
+		SetVehicleEngineHealth(aT, 9999)
+		SetVehiclePetrolTankHealth(aT, 9999)
+		SetVehicleFixed(aT)
+		SetVehicleDirtLevel(aT, 0.0)
+	end
+end, false)
